@@ -1,0 +1,49 @@
+import java.util.*;
+
+/**
+ * Created by leiyaoyao on 16/7/19.
+ */
+public class Test {
+    public static void main(String[] args){
+        int[] arr = {1,-2,3,10,-4,7,2,-5};
+        System.out.print(maxSum(arr));
+    }
+    //加不加arr[i]与前一个元素arr[i-1]相关
+    public static int maxSum(int[] arr){
+        if(arr == null || arr.length == 0)
+            return 0;
+        int len = arr.length;
+        int[][] res = new int[len][2];
+        res[0][0] = arr[0];
+        res[0][1] = arr[0];
+        for(int i = 1; i < len; i++){
+            res[i][0] = Math.max(res[i - 1][0], res[i - 1][1]);//不加自己,无所谓前一个元素加与不加,直接取最大值
+            res[i][1] = Math.max(arr[i], res[i - 1][1] + arr[i]);//加自己,前一个元素必须已经加上
+        }
+        return Math.max(res[len - 1][0], res[len - 1][1]);
+    }
+}
+class A{
+    private int age;
+    public A(int age){
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(age);
+    }
+
+    @Override
+    public int hashCode() {
+        return age;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof A)
+            return this.age == ((A) obj).age;
+        else
+            return false;
+    }
+}
+
