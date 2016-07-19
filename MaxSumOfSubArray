@@ -23,27 +23,4 @@ public class Test {
         return Math.max(res[len - 1][0], res[len - 1][1]);
     }
 }
-class A{
-    private int age;
-    public A(int age){
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(age);
-    }
-
-    @Override
-    public int hashCode() {
-        return age;
-    }
-    @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof A)
-            return this.age == ((A) obj).age;
-        else
-            return false;
-    }
-}
 
